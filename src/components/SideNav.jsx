@@ -1,7 +1,7 @@
 import { Image, PencilRuler, Shield } from 'lucide-react'
 import React, { useState } from 'react'
 
-export default function SideNav() {
+export default function SideNav({selectedIndex}) {
     
     const menulist=[
         {
@@ -34,7 +34,10 @@ export default function SideNav() {
               <h2 className={`flex gap-2 items-center p-3 text-lg px-7 text-gray-500 my-2 
                cursor-pointer hover:bg-primary hover:text-white
                ${activeIndex==index && 'bg-primary text-white'}`}
-               key={index}   onClick={()=>setActiveIndex(index)}  >
+               key={index}   onClick={()=>{
+                setActiveIndex(index)
+                selectedIndex(index)
+                }}  >
 
                 <menu.icon/>
                 {menu.name}
