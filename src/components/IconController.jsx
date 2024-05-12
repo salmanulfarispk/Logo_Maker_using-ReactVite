@@ -1,6 +1,8 @@
 import { Smile } from 'lucide-react'
 import React, { useState } from 'react'
 import { Slider } from "@/components/ui/slider"
+import ColorPickerController from './ColorPickerController'
+
 
 
 function IconController() {
@@ -30,6 +32,11 @@ function IconController() {
                 setRotate(event[0])
              }}
             />
+            </div>
+
+            <div className='py-2 '>
+                <lable className='py-2 flex justify-between items-center'>Icon color</lable>
+                 <ColorPickerController hideController={true}/>
             </div>
 
 
