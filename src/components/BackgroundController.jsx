@@ -14,7 +14,7 @@ export default function BackgroundController() {
      useEffect(()=>{
         const updatedvalue={
             ...storageVlaue,
-            bgRound: rounded,
+            bgRounded: rounded,
             bgPadding: padding,
             bgColor: color,
             
