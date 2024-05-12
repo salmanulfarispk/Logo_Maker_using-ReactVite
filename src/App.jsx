@@ -3,12 +3,12 @@ import BackgroundController from './components/BackgroundController'
 import Header from './components/Header'
 import IconController from './components/IconController'
 import SideNav from './components/SideNav'
-import { Button } from './components/ui/button'
+
 
 
 function App() {
  
-  const [selectedIndex,setSelectedIndex]=useState();
+  const [selectedIndex,setSelectedIndex]=useState(0);
 
   return (
     <>
@@ -20,7 +20,7 @@ function App() {
         </div>
 
         <div className='ml-64 grid grid-cols-1 md:grid-cols-6 fixed'>
-          
+
            <div className='md:col-span-2 border h-screen shadow-sm p-5 overflow-auto'>
             {selectedIndex==0?
               <IconController/> :
