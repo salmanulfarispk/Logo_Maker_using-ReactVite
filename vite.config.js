@@ -9,4 +9,12 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+       //server configuration in a Vite project.
+  server:{
+    port:'5001',
+    strictPort:true,
+    proxy:{
+      '/png':'https://logoexpress.tubeguruji.com'
+    }
+  }
 })

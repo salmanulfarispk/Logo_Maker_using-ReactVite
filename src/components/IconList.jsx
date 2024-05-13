@@ -47,9 +47,10 @@ export default function IconList({SelectedIcon}) {
         <label>Icon</label>
             <div className='p-3 cursor-pointer bg-gray-200 rounded-md  w-[50px] h-[50px] 
             flex items-center justify-center' onClick={()=>{setopenDialog(true)}}>
-                
+                {icon?.includes('.png')?
+                <img src={BASE_URL+'/png/'+icon}/>:
                <Icon name={icon} color={"#000"} size={20}/>
-                
+              }   
             </div>
         </div>
         <Dialog open={openDialog} onOpenChange={setopenDialog}>

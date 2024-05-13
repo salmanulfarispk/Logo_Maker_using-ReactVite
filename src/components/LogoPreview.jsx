@@ -4,6 +4,7 @@ import { icons } from 'lucide-react'
 import React, { useContext, useEffect, useState } from 'react'
 
 
+
 export default function LogoPreview({downloadIcon}) {
 
     const [storagevalue,setStoredValue]=useState()
@@ -58,9 +59,16 @@ export default function LogoPreview({downloadIcon}) {
             
            }}
          >
-           <Icon name={storagevalue?.icon} color={storagevalue?.iconColor} 
-           size={storagevalue?.iconSize} rotate={storagevalue?.iconRotate}/>
+             {storagevalue?.icon?.includes('.png')?
+               <img src={'/png/'+storagevalue?.icon} 
+                 style={{height:storagevalue?.iconSize,width:storagevalue?.iconSize}}
+               /> :
             
+               <Icon name={storagevalue?.icon} 
+                color={storagevalue?.iconColor} 
+                size={storagevalue?.iconSize} 
+                rotate={storagevalue?.iconRotate} />
+          }
          </div>
 
         </div>
