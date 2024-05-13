@@ -1,8 +1,8 @@
-import { Smile } from 'lucide-react'
 import React, { useContext, useEffect, useState } from 'react'
 import { Slider } from "@/components/ui/slider"
 import ColorPickerController from './ColorPickerController'
 import { UpdateStorageContext } from '@/context/UpdateStorageContext'
+import IconList from './IconList'
 
 
 
@@ -15,6 +15,7 @@ function IconController() {
     const[color,setColor]=useState(storageValue?storageValue?.iconColor:'#fff')
     
     const {updateStorage,setUpdateStorage}=useContext(UpdateStorageContext)
+    const [icon,setIcon]=useState(storageValue?storageValue?.icon:'AlignCenter')
 
      useEffect(()=>{
        
@@ -24,23 +25,20 @@ function IconController() {
             iconSize: size,
             iconRotate: rotate,
             iconColor: color,
-            icon: 'Smile'
+            icon: icon,
 
         }
         setUpdateStorage(updatedvalue)
          localStorage.setItem("value",JSON.stringify(updatedvalue))
 
-     },[size,rotate,color])
+     },[size,rotate,color,icon])
     
 
   return (
     <div>
         <div>
-            <label>Icon</label>
-            <div className='p-3 cursor-pointer bg-gray-200 rounded-md  w-[50px] h-[50px] 
-            flex items-center justify-center'>
-                <Smile/>
-            </div>
+            <IconList SelectedIcon={(icon)=>setIcon(icon)}/>
+
             <div className='py-2 '>
                 <lable className='py-2 flex justify-between items-center'>Size  <span>{size} px</span></lable>
             <Slider defaultValue={[size]} max={512} step={1}

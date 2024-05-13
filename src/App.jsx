@@ -8,12 +8,14 @@ import { UpdateStorageContext } from './context/UpdateStorageContext'
 
 
 
+
 function App() {
  
   const [selectedIndex,setSelectedIndex]=useState(0);
   const [updateStorage,setUpdateStorage]=useState({});
 
 
+    
   return (
         
     <UpdateStorageContext.Provider value={{updateStorage,setUpdateStorage}}>
@@ -39,10 +41,9 @@ function App() {
              <LogoPreview/> 
            </div>
            <div className=''>
-              ads banner
+              adsss  cmmc 
            </div>
         </div>
-        
         
     </div>
     </UpdateStorageContext.Provider>
