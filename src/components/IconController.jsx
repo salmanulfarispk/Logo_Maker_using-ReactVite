@@ -1,25 +1,33 @@
 import { Smile } from 'lucide-react'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Slider } from "@/components/ui/slider"
 import ColorPickerController from './ColorPickerController'
+import { UpdateStorageContext } from '@/context/UpdateStorageContext'
 
 
 
 function IconController() {
-    const [size,setSize]=useState(280)
-    const[rotate,setRotate]=useState(0)
-    const[color,setColor]=useState('#fff')
+
+    const storageValue=JSON.parse(localStorage.getItem('value'))
+
+    const [size,setSize]=useState(storageValue?storageValue?.iconSize:280)
+    const[rotate,setRotate]=useState(storageValue?storageValue?.iconRotate:0)
+    const[color,setColor]=useState(storageValue?storageValue?.iconColor:'#fff')
     
-    const storageVlaue=JSON.parse(localStorage.getItem('value'))
+    const {updateStorage,setUpdateStorage}=useContext(UpdateStorageContext)
 
      useEffect(()=>{
+       
+       
         const updatedvalue={
-            ...storageVlaue,
+            ...storageValue,
             iconSize: size,
             iconRotate: rotate,
             iconColor: color,
             icon: 'Smile'
+
         }
+        setUpdateStorage(updatedvalue)
          localStorage.setItem("value",JSON.stringify(updatedvalue))
 
      },[size,rotate,color])
@@ -35,7 +43,7 @@ function IconController() {
             </div>
             <div className='py-2 '>
                 <lable className='py-2 flex justify-between items-center'>Size  <span>{size} px</span></lable>
-            <Slider defaultValue={[280]} max={512} step={1}
+            <Slider defaultValue={[size]} max={512} step={1}
              onValueChange={(event)=>{
                 setSize(event[0])
              }}
@@ -44,7 +52,7 @@ function IconController() {
 
             <div className='py-2 '>
                 <lable className='py-2 flex justify-between items-center'>Rotate <span>{rotate}°</span></lable>
-            <Slider defaultValue={[0]} max={360} step={1}
+            <Slider defaultValue={[rotate]} max={360} step={1}
              onValueChange={(event)=>{
                 setRotate(event[0])
              }}
