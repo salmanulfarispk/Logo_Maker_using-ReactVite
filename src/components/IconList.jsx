@@ -38,7 +38,7 @@ export default function IconList({SelectedIcon}) {
                 
             </div>
         </div>
-        <Dialog open={openDialog}>
+        <Dialog open={openDialog} onOpenChange={setopenDialog}>
     <DialogContent>
     <DialogHeader>
       <DialogTitle>Pick your Icon</DialogTitle>
