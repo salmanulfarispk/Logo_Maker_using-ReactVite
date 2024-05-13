@@ -13,16 +13,16 @@ function App() {
  
   const [selectedIndex,setSelectedIndex]=useState(0);
   const [updateStorage,setUpdateStorage]=useState({});
+  const [downloadIcon,setDownloadIcon]=useState()
 
 
-    
   return (
         
     <UpdateStorageContext.Provider value={{updateStorage,setUpdateStorage}}>
 
     <div>
         
-        <Header/>
+        <Header  DownloadIcon={setDownloadIcon}/>
         <div className='w-64 fixed'>
         <SideNav selectedIndex={(value)=>
           setSelectedIndex(value)
@@ -38,7 +38,7 @@ function App() {
             }
            </div>
            <div className='md:col-span-3'>
-             <LogoPreview/> 
+             <LogoPreview downloadIcon={downloadIcon}/> 
            </div>
            <div className=''>
               adsss  cmmc 
